@@ -7,6 +7,7 @@ import router from './router'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+//跟组件  myvar 子组件 App
 var myvar =new Vue({
   el: '#app',
   router,
