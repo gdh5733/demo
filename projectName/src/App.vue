@@ -1,3 +1,5 @@
+
+
 <template>
   <div id="app">
     <img src="./assets/logo.png">
@@ -7,19 +9,21 @@
    
   <p v-text="hello"></p>
   <p v-html="hello"></p>
+  
    <!--组件列表渲染1-->
    <componenta></componenta>
    <!--组件列表渲染2-->
    <componenta v-for="(value,key) in objectList" :key="key"></componenta>
   <!--使用v-for 循环 技术盲点是怎么获取到每个集合元素的索引-->
   <p v-for="item in list" :key="item.id"> {{ item.name }} - {{ item.price }} - {{ item.id }}</p> 
-  
-    <router-view/>
+  <button v-on="click=addItem">addItem</button>
+    <!-- <router-view/> -->
   </div>
 </template>
 
 <script>
 import componentA from './components/a'
+import Vue from 'vue'
 export default {
   //注册子组件a
   components: {
