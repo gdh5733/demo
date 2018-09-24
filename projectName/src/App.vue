@@ -1,24 +1,35 @@
 
 
+
 <template>
-  <div id="app">
+    <div id="app">
     <img src="./assets/logo.png">
     <!-- <p :title='hello'>
       {{ hello }}
     </p> -->
    
   <p v-text="hello"></p>
-  <p v-html="hello"></p>
+  
+    <p v-html="hello"></p>
   
    <!--组件列表渲染1-->
    <componenta></componenta>
-   <!--组件列表渲染2-->
+   <!--组件列表渲染2  对象-->
    <componenta v-for="(value,key) in objectList" :key="key"></componenta>
-  <!--使用v-for 循环 技术盲点是怎么获取到每个集合元素的索引-->
+  <!--使用v-for 循环 技术盲点是怎么获取到每个集合元素的索引   集合-->
   <p v-for="item in list" :key="item.id"> {{ item.name }} - {{ item.price }} - {{ item.id }}</p> 
-  <button v-on="click=addItem">addItem</button>
-    <!-- <router-view/> -->
+   
+   <button v-on:click=addItem>addItem</button>
+   <!--相当于v-bind:href -->
+   <a :href="link" :title="Baidu">Link</a>
+   
+   <a v-if="isPartA">partA</a>
+   <!--DOM 中存在 通过 css display none 给隐藏掉了-->
+   <a v-show="!isPartA">partB</a>
+   <button v-on:click="toggle">toggle</button>
+     <router-view/> 
   </div>
+
 </template>
 
 <script>
@@ -32,6 +43,9 @@ export default {
   data() {
       return {
         hello: 'world',
+        link: 'http://www.baidu.com',
+        isPartA : true,
+        Baidu: 'this is baidu',
         //集合
         list: [
           { id:'1',
@@ -51,6 +65,18 @@ export default {
           weight: 14
         }
       }
+ },
+ methods: {
+   addItem () {
+      Vue.set(this.list,1,{
+        name: 'pinaapple',
+        price: 256
+      })
+   },
+   toggle() {
+     var _this = this;
+       _this.isPartA = ! _this.isPartA;
+   }
  }
 
 }
