@@ -15,7 +15,7 @@
    <!--组件列表渲染1-->
    
    <!--组件列表渲染2  对象-->
-   <componenta v-for="(value,key) in objectList" :key="key"></componenta>
+   <!-- <componenta v-for="(value,key) in objectList" :key="key"></componenta> -->
   <!--使用v-for 循环 技术盲点是怎么获取到每个集合元素的索引   集合-->
   <p v-for="item in list" :key="item.id"> {{ item.name }} - {{ item.price }} - {{ item.id }}</p> 
    
